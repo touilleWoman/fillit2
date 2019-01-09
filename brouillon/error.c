@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include ".libft/libft.h"
+#include <unistd.h>
 
 int		ft_error_int(void)
 {

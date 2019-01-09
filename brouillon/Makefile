@@ -28,7 +28,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) libft/libft.a
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) .libft/libft.a
 
 clean :
 	rm -rf $(OBJS)

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include ".libft/libft.h"
 
 void	lstprint(t_list *list)
 {
@@ -34,7 +35,7 @@ int		main(int ac, char **av)
 		return (ft_error_int());
 	}
 	ft_strdel(&file);
-	if (!(fillit(lst_tetri, (ret / 21))))
+	if (!(fillit(lst_tetri, ret / 21)))
 	{
 		ft_lstdel(&lst_tetri, &ft_lstdel_cnt);
 		return (ft_error_int());
