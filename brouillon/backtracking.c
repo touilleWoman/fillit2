@@ -25,7 +25,7 @@ int		finish(char *square, t_list *tetri_lst)
 		while (!ft_isalpha(*tetri))
 			tetri++;
 		letter = *tetri;
-		while (square[i] && square[i] != letter)
+		while (square[i] && (square[i] != letter)) //m
 			i++;
 		if (square[i] != letter)
 			return (0);
