@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include ".libft/libft.h"
 
 int		create_square(char **square, int size)
 {
@@ -60,12 +59,16 @@ int		solution(int size, t_list *tetri_lst)
 	return (1);
 }
 
-int		fillit(t_list *tetri_lst)
+int		fillit(t_list *tetri_lst, int nbr_tetri) //m
 {
 	int		square_size;
 	int		status;
 
 	square_size = 2;
+	while((square_size * square_size) < (4 * nbr_tetri))
+	{
+		square_size++;
+	}
 	while ((status = solution(square_size, tetri_lst)) && status != -1 && square_size < 10)
 		square_size++;
 	if (status == -1)

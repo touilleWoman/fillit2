@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include ".libft/libft.h"
 #include "fillit.h"
 
 void	ft_swap(char *a, char *b)
@@ -79,6 +78,7 @@ int		create_tetri(int nb_tetri, char *file, t_list **tetri)
 
 	if (!(*tetri = ft_lstset("....\n....\n....\n....\n\n", 22, nb_tetri)))
 		return (0);
+	printf("nb_tetri%d\n", nb_tetri);
 	new = *tetri;
 	letter = 'A';
 	while (new)

@@ -12,7 +12,11 @@
 
 #ifndef FILLIT_H
 # define FILLIT_H
-#include ".libft/libft.h"
+# include "libft/libft.h"
+# include <fcntl.h>
+# include <stdio.h> // delete later
+# include <unistd.h>
+
 
 int		get_file(char *file_path, char **file);
 int		ft_error_int(void);
@@ -21,7 +25,8 @@ int		ft_usage(int nb);
 int		check_line(char *line);
 int		check_file(char *file);
 int		create_tetri(int nb_tetri, char *file, t_list **tetri);
-int		fillit(t_list *tetri_lst);
+int		fillit(t_list *tetri_lst, int nbr_tetri);//m
 int		backtracking(char **carre, int square_size, t_list *tetri);
 
+int 	test_getfile(int argc, char **argv);
 #endif

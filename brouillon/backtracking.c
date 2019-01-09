@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include ".libft/libft.h"
 
 int		finish(char *square, t_list *tetri_lst)
 {
