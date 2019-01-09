@@ -127,26 +127,39 @@ int		backtracking(char **carre, int square_size, t_list *tetri_lst)
 	char	*square;
 
 	square = *carre;
-	if (finish(square, tetri_lst))
+	if (!tetri_lst)
+//	if (finish(square, tetri_lst))
 		return (1);
 	tetri = tetri_lst;
 	while (*square)
 	{
 		while (*square && *square != '.')
 			square++;
-		while (tetri && *square)
+		if (!*square)
+			continue;
+
+		if (tetri_absent(square, tetri->content) &&\
+			try(square, square_size, tetri->content, 4))
 		{
-			if (tetri_absent(square, tetri->content) &&\
-				try(square, square_size, tetri->content, 4))
-			{
-				square = put_tetri(square, square_size, tetri->content);
-				if (backtracking(carre, square_size, tetri_lst))
-					return (1);
-				square = remove_tetri(square, tetri->content);
-			}
-			tetri = tetri->next;
+			square = put_tetri(square, square_size, tetri->content);
+			if (backtracking(carre, square_size, tetri_lst->next))
+				return (1);
+			square = remove_tetri(square, tetri->content);
 		}
-		tetri = tetri_lst;
+
+		// while (tetri && *square)
+		// {
+		// 	if (tetri_absent(square, tetri->content) &&\
+		// 		try(square, square_size, tetri->content, 4))
+		// 	{
+		// 		square = put_tetri(square, square_size, tetri->content);
+		// 		if (backtracking(carre, square_size, tetri_lst->next))
+		// 			return (1);
+		// 		square = remove_tetri(square, tetri->content);
+		// 	}
+		// 	tetri = tetri->next;
+		// }
+		// tetri = tetri_lst;
 		square++;
 	}
 	return (0);
