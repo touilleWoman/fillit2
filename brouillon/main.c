@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 15:31:13 by tlamart           #+#    #+#             */
-/*   Updated: 2019/01/10 11:45:01 by tlamart          ###   ########.fr       */
+/*   Updated: 2019/01/10 11:53:42 by tlamart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		usage(void)
 {
-	ft_putendl_fd("usage: ./fillit file.", 2);
+	ft_putendl_fd("usage: ./fillit file", 2);
 	return (0);
 }
 
