@@ -78,17 +78,6 @@ int		create_tetri(int nb_tetri, char *file, t_list **tetri)
 
 	if (!(*tetri = ft_lstset("....\n....\n....\n....\n\n", 22, nb_tetri)))
 		return (0);
-//test
-	// t_list *new2;
-
-	// new2 = *tetri;
-	// while (new2)
-	// {
-	// 	printf("%s\n", 	new2->content);
-	// 	new2 = new2->next;
-	// }
-
-// test over
 	new = *tetri;
 	letter = 'A';
 	while (new)

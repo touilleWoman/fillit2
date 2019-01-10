@@ -12,40 +12,6 @@
 
 #include "fillit.h"
 
-// int		finish(char *square, t_list *tetri_lst)
-// {
-// 	char	letter;
-// 	int		i;
-// 	char	*tetri;
-
-// 	while (tetri_lst)
-// 	{
-// 		i = 0;
-// 		tetri = (char*)tetri_lst->content;
-// 		while (!ft_isalpha(*tetri))
-// 			tetri++;
-// 		letter = *tetri;
-// 		while (square[i] && (square[i] != letter)) //m
-// 			i++;
-// 		if (square[i] != letter)
-// 			return (0);
-// 		tetri_lst = tetri_lst->next;
-// 	}
-// 	return (1);
-// }
-
-// int		tetri_absent(char *square, char *tetri)
-// {
-// 	char	letter;
-
-// 	while (!ft_isalpha(*tetri))
-// 		tetri++;
-// 	letter = *tetri;
-// 	while (*square && *square != letter)
-// 		square++;
-// 	return (*square != letter);
-// }
-
 void	put_tetri(char *square, int square_size, char *tetri)
 {
 	int		i;
@@ -125,16 +91,9 @@ int		backtracking(char **carre, int square_size, t_list *tetri)
 
 	square = *carre;
 	if (!tetri)
-//	if (finish(square, tetri_lst))
 		return (1);
 	while (*square)
 	{
-		// while (*square && *square != '.')
-		// 	square++;
-
-		// if (!*square)
-		// 	break;
-
 		if (try(square, square_size, tetri->content, 4))
 		{
 			put_tetri(square, square_size, tetri->content);
@@ -142,20 +101,6 @@ int		backtracking(char **carre, int square_size, t_list *tetri)
 				return (1);
 			remove_tetri(square, tetri->content);
 		}
-
-		// while (tetri && *square)
-		// {
-		// 	if (tetri_absent(square, tetri->content) &&\
-		// 		try(square, square_size, tetri->content, 4))
-		// 	{
-		// 		square = put_tetri(square, square_size, tetri->content);
-		// 		if (backtracking(carre, square_size, tetri_lst))
-		// 			return (1);
-		// 		square = remove_tetri(square, tetri->content);
-		// 	}
-		// 	tetri = tetri->next;
-		// }
-		// tetri = tetri_lst;
 		square++;
 	}
 	return (0);
