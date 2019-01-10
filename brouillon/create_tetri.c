@@ -88,12 +88,6 @@ int		create_tetri(int nb_tetri, char *file, t_list **tetri)
 	// 	new2 = new2->next;
 	// }
 
-//pourquoi un block en trop quand j'utilise directement tetri
-	// while ((*tetri))
-	// {
-	// 	printf("%s\n", 	(*tetri)->content);
-	// 	(*tetri) = (*tetri)->next;
-	// }
 // test over
 	new = *tetri;
 	letter = 'A';
@@ -111,14 +105,5 @@ int		create_tetri(int nb_tetri, char *file, t_list **tetri)
 		new = new->next;
 	}
 	optimize_tetri(tetri);
-	// t_list *new2;
-
-	// new2 = *tetri;
-	// while (new2)
-	// {
-	// 	printf("%s\n", 	new2->content);
-	// 	new2 = new2->next;
-	// }
-
 	return (1);
 }

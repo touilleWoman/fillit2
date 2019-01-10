@@ -34,7 +34,7 @@ int		create_square(char **square, int size)
 			str[i] = '.';
 		i++;
 	}
-	str[len-1] = '\0';
+	//str[len-1] = '\0';
 	return (1);
 }
 
@@ -50,7 +50,11 @@ int		solution(int size, t_list *tetri_lst)
 	status = backtracking(&square, size, tetri_lst);
 	if (status == 1)
 	{
-		ft_putendl(square);
+		//ft_putendl(square);
+
+		ft_putstr(square);
+		ft_strdel(&square);
+
 		return (0);
 	}
 	ft_strdel(&square);
@@ -67,10 +71,8 @@ int		fillit(t_list *tetri_lst, int tetri_nbr)
 	{
 		square_size++;
 	}
-	while ((status = solution(square_size, tetri_lst)) && status != -1 && square_size < 10){
-		printf("--> %d\n", square_size);
+	while ((status = solution(square_size, tetri_lst)) && status != -1 && square_size < 10)
 		square_size++;
-	}
 	if (status == -1)
 		return (0);
 	return (1);
