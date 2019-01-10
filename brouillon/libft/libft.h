@@ -6,7 +6,7 @@
 /*   By: tlamart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 14:35:09 by tlamart           #+#    #+#             */
-/*   Updated: 2019/01/07 09:36:31 by tlamart          ###   ########.fr       */
+/*   Updated: 2019/01/10 11:41:18 by tlamart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ void			ft_lstcut_next(t_list **lst);
 t_list			*ft_lstset(void *content, size_t content_size, size_t len);
 int				get_next_line(const int fd, char **line);
 int				ft_lstlen(t_list *list);
+void			ft_swap(char *a, char *b);
 
 #endif
