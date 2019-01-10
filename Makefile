@@ -6,7 +6,7 @@
 #    By: jleblond <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/10 10:22:18 by jleblond          #+#    #+#              #
-#    Updated: 2019/01/10 11:28:56 by tlamart          ###   ########.fr        #
+#    Updated: 2019/01/10 13:37:21 by tlamart          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,8 +43,10 @@ $(LIBFT):
 
 clean:
 	rm -f $(OFILE)
+	make clean -C ./libft
 
 fclean: clean
 	rm -f $(NAME)
+	make fclean -C ./libft
 
 re: fclean all
