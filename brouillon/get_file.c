@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include ".libft/libft.h"
 #include "fillit.h"
 #include <fcntl.h>
 #include <unistd.h>
@@ -21,7 +20,7 @@ int		get_file(char *file_path, char **file)
 {
 	int		fd;
 	int		ret;
-	
+
 	fd = open(file_path, O_RDONLY);
 	ret = read(fd, *file, 1024);
 	close(fd);

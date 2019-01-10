@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include ".libft/libft.h"
 
 void	lstprint(t_list *list)
 {
