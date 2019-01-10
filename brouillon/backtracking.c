@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 09:44:33 by tlamart           #+#    #+#             */
-/*   Updated: 2019/01/08 19:31:50 by thibault         ###   ########.fr       */
+/*   Updated: 2019/01/10 11:43:27 by tlamart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	put_tetri(char *square, int square_size, char *tetri)
 			i = 0;
 			line += square_size + 1;
 		}
-		else if (*tetri == '.' && ft_isalpha(*(tetri + 1)))
+		else if (*tetri == '.')
 			i++;
 		tetri++;
 	}
@@ -78,7 +78,7 @@ int		try(char *square, unsigned int square_size, char *tetri, int end)
 			square += square_size + 1;
 			i = 0;
 		}
-		else if (*tetri == '.' && (ft_isalpha(*(tetri + 1))))
+		else if (*tetri == '.')
 			i++;
 		tetri++;
 	}
