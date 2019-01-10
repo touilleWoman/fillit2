@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 18:39:43 by tlamart           #+#    #+#             */
-/*   Updated: 2019/01/10 11:46:24 by tlamart          ###   ########.fr       */
+/*   Updated: 2019/01/10 12:23:50 by tlamart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int		solution(int size, t_list *tetri_lst)
 	char	*square;
 	int		status;
 
-	(void)tetri_lst;
 	status = 0;
 	if (!(create_square(&square, size)))
 		return (-1);
@@ -63,11 +62,9 @@ int		fillit(t_list *tetri_lst, int tetri_nbr)
 
 	square_size = 2;
 	while (square_size * square_size < 4 * tetri_nbr)
-	{
 		square_size++;
-	}
 	while ((status = solution(square_size, tetri_lst))\
-			&& status != -1 && square_size < 10)
+			&& status != -1)
 		square_size++;
 	if (status == -1)
 		return (0);
