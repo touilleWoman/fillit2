@@ -6,20 +6,11 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 14:59:18 by tlamart           #+#    #+#             */
-/*   Updated: 2019/01/02 16:29:13 by thibault         ###   ########.fr       */
+/*   Updated: 2019/01/10 11:46:47 by tlamart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-void	ft_swap(char *a, char *b)
-{
-	char	tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
 
 void	swap_line(char **str)
 {
@@ -70,6 +61,35 @@ void	optimize_tetri(t_list **list)
 	}
 }
 
+void	optimize_more(t_list **list)
+{
+	t_list	*tetri;
+	char	*str;
+	int		line;
+
+	tetri = *list;
+	while (tetri)
+	{
+		line = 0;
+		str = tetri->content;
+		while (line < 4 && *str)
+		{
+			while (*str == '.' && *str)
+				str++;
+			while (ft_isalpha(*str))
+				str++;
+			while (*str == '.' && *str)
+			{
+				*str = '0';
+				str++;
+			}
+			str++;
+			line++;
+		}
+		tetri = tetri->next;
+	}
+}
+
 int		create_tetri(int nb_tetri, char *file, t_list **tetri)
 {
 	t_list	*new;
@@ -78,17 +98,6 @@ int		create_tetri(int nb_tetri, char *file, t_list **tetri)
 
 	if (!(*tetri = ft_lstset("....\n....\n....\n....\n\n", 22, nb_tetri)))
 		return (0);
-//test
-	// t_list *new2;
-
-	// new2 = *tetri;
-	// while (new2)
-	// {
-	// 	printf("%s\n", 	new2->content);
-	// 	new2 = new2->next;
-	// }
-
-// test over
 	new = *tetri;
 	letter = 'A';
 	while (new)
@@ -105,5 +114,6 @@ int		create_tetri(int nb_tetri, char *file, t_list **tetri)
 		new = new->next;
 	}
 	optimize_tetri(tetri);
+	optimize_more(tetri);
 	return (1);
 }

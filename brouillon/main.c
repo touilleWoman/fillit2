@@ -6,15 +6,22 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 15:31:13 by tlamart           #+#    #+#             */
-/*   Updated: 2019/01/08 19:22:58 by thibault         ###   ########.fr       */
+/*   Updated: 2019/01/10 11:45:01 by tlamart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	lstprint(t_list *list)
+int		usage(void)
 {
-	ft_putstr(list->content);
+	ft_putendl_fd("usage: ./fillit file.", 2);
+	return (0);
+}
+
+int		error(void)
+{
+	ft_putendl_fd("error", 2);
+	return (0);
 }
 
 int		main(int ac, char **av)
@@ -24,20 +31,20 @@ int		main(int ac, char **av)
 	t_list	*lst_tetri;
 
 	if (ac != 2)
-		return (ft_usage(ac));
-	if (!(file = ft_strnew(1023)))
-		return (ft_error_int());
+		return (usage());
+	if (!(file = ft_strnew(1024)))
+		return (error());
 	if (!(ret = get_file(av[1], &file)) || !(check_file(file)) ||\
 		!(create_tetri(ret / 21, file, &lst_tetri)))
 	{
 		ft_strdel(&file);
-		return (ft_error_int());
+		return (error());
 	}
 	ft_strdel(&file);
 	if (!(fillit(lst_tetri, ret / 21)))
 	{
 		ft_lstdel(&lst_tetri, &ft_lstdel_cnt);
-		return (ft_error_int());
+		return (error());
 	}
 	ft_lstdel(&lst_tetri, &ft_lstdel_cnt);
 	return (0);
