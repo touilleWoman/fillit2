@@ -3,39 +3,49 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+         #
+#    By: jleblond <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/12/27 15:09:55 by tlamart           #+#    #+#              #
-#    Updated: 2019/01/08 17:04:37 by thibault         ###   ########.fr        #
+#    Created: 2019/01/10 10:22:18 by jleblond          #+#    #+#              #
+#    Updated: 2019/01/10 10:22:21 by jleblond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fillit
+.PHONY: all clean fclean re
 
 CC = gcc
+CFLAGS = -Wall -Werror -Wextra
 
-CFLAGS = -Wall -Wextra -Werror
 
-SRCS = main.c \
+SOURCE = main.c \
 	   get_file.c \
 	   create_tetri.c \
 	   backtracking.c \
 	   fillit.c \
 	   error.c \
 
-OBJS = $(SRCS:.c=.o)
+HEADER = fillit.h
+
+OFILE = $(SOURCE:.c=.o)
+
+NAME = fillit
+
+LIBFT = libft/libft.a
 
 all: $(NAME)
 
-$(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) .libft/libft.a
+$(NAME): $(LIBFT) $(OFILE)
+	$(CC) $(CFLAGS) $(OFILE) libft/libft.a -o $(NAME)
 
-clean :
-	rm -rf $(OBJS)
+$(OFILE):  $(SOURCE)
+	$(CC) $(CFLAGS) -c $(SOURCE)
 
-fclean : clean
-	rm -rf $(NAME)
+$(LIBFT):
+	make -C ./libft
 
-re : fclean all
+clean:
+	rm -f $(OFILE)
 
-.PHONY : all $(NAME) clean fclean re
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
