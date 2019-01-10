@@ -5,12 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/09 12:23:30 by tlamart           #+#    #+#             */
-/*   Updated: 2019/01/09 15:09:59 by tlamart          ###   ########.fr       */
+/*   Created: 2018/12/29 14:59:18 by tlamart           #+#    #+#             */
+/*   Updated: 2019/01/10 11:46:47 by tlamart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "fillit.h"
 
 void	swap_line(char **str)
@@ -91,14 +90,14 @@ void	optimize_more(t_list **list)
 	}
 }
 
-void	create_tetri(int nb_tetri, char *file, t_list **tetri)
+int		create_tetri(int nb_tetri, char *file, t_list **tetri)
 {
 	t_list	*new;
 	char	*str;
 	char	letter;
 
 	if (!(*tetri = ft_lstset("....\n....\n....\n....\n\n", 22, nb_tetri)))
-		return ;
+		return (0);
 	new = *tetri;
 	letter = 'A';
 	while (new)
@@ -116,4 +115,5 @@ void	create_tetri(int nb_tetri, char *file, t_list **tetri)
 	}
 	optimize_tetri(tetri);
 	optimize_more(tetri);
+	return (1);
 }

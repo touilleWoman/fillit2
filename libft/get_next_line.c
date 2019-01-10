@@ -6,14 +6,14 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:45:04 by tlamart           #+#    #+#             */
-/*   Updated: 2018/12/17 10:56:43 by tlamart          ###   ########.fr       */
+/*   Updated: 2018/12/19 12:09:05 by thibault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libft.h"
 
-static int	ft_search_end_of_line(char **bol, char **line)
+int		ft_search_end_of_line(char **bol, char **line)
 {
 	char	*eol;
 	char	*tmp;
@@ -31,7 +31,7 @@ static int	ft_search_end_of_line(char **bol, char **line)
 	return (0);
 }
 
-static int	ft_read(const int fd, char **line, char **bol)
+int		ft_read(const int fd, char **line, char **bol)
 {
 	char		buf[BUFF_SIZE + 1];
 	char		*tmp;
@@ -51,25 +51,23 @@ static int	ft_read(const int fd, char **line, char **bol)
 	return (ret);
 }
 
-int			get_next_line(const int fd, char **line)
+int		get_next_line(const int fd, char **line)
 {
 	static char	*bol = NULL;
 	int			status;
 
-	if (!line)
-		return (-1);
-	if (bol == NULL && !(bol = ft_strnew(0)))
+	if (!line || (!bol && !(bol = ft_strnew(0))))
 		return (-1);
 	if ((status = ft_read(fd, line, &bol)))
 		return (status);
 	if ((status = ft_search_end_of_line(&bol, line)))
 		return (status);
-	*line = bol;
 	if (*bol)
 	{
+		*line = bol;
 		bol = ft_strnew(0);
-		return (1);
 	}
 	ft_strdel(&bol);
 	return (0);
+	return(0);
 }

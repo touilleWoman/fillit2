@@ -6,16 +6,14 @@
 /*   By: tlamart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 14:35:09 by tlamart           #+#    #+#             */
-/*   Updated: 2019/01/09 15:30:20 by tlamart          ###   ########.fr       */
+/*   Updated: 2019/01/10 11:41:18 by tlamart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
-# ifndef BUFF_SIZE
-# define BUFF_SIZE 2048
-# endif
+# define BUFF_SIZE 1024
 
 typedef struct	s_list
 {
@@ -89,7 +87,7 @@ int				ft_isspace(int c);
 void			ft_lstcut_next(t_list **lst);
 t_list			*ft_lstset(void *content, size_t content_size, size_t len);
 int				get_next_line(const int fd, char **line);
-void			ft_swap(char *a, char *b);
 int				ft_lstlen(t_list *list);
+void			ft_swap(char *a, char *b);
 
 #endif

@@ -3,35 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlamart <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/08 10:14:55 by tlamart           #+#    #+#             */
-/*   Updated: 2019/01/09 17:09:57 by tlamart          ###   ########.fr       */
+/*   Created: 2018/12/27 15:31:13 by tlamart           #+#    #+#             */
+/*   Updated: 2019/01/10 11:53:42 by tlamart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "libft/libft.h"
-#include "fcntl.h"
-#include "unistd.h"
 
-void	lst_put(t_list *elem)
-{
-	ft_putstr(elem->content);
-}
-
-int		fillit(const int fd)
-{
-	char	*file;
-	t_list	*tetri_lst;
-
-	get_file(fd, &file, &tetri_lst);
-	solve(tetri_lst);
-	ft_lstdel(&tetri_lst, &ft_lstdel_cnt);
-	return (0);
-}
-
-int		usage(int nb_params)
+int		usage(void)
 {
 	ft_putendl_fd("usage: ./fillit file", 2);
 	return (0);
@@ -45,13 +26,26 @@ int		error(void)
 
 int		main(int ac, char **av)
 {
-	int		fd;
+	char	*file;
+	int		ret;
+	t_list	*lst_tetri;
 
 	if (ac != 2)
-		return (usage(ac));
-	if ((fd = open(av[1], O_RDONLY)) == -1)
+		return (usage());
+	if (!(file = ft_strnew(1024)))
 		return (error());
-	fillit(fd);
-	close(fd);
-	return (1);
+	if (!(ret = get_file(av[1], &file)) || !(check_file(file)) ||\
+		!(create_tetri(ret / 21, file, &lst_tetri)))
+	{
+		ft_strdel(&file);
+		return (error());
+	}
+	ft_strdel(&file);
+	if (!(fillit(lst_tetri, ret / 21)))
+	{
+		ft_lstdel(&lst_tetri, &ft_lstdel_cnt);
+		return (error());
+	}
+	ft_lstdel(&lst_tetri, &ft_lstdel_cnt);
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: tlamart <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 09:50:07 by tlamart           #+#    #+#              #
-#    Updated: 2019/01/09 15:29:51 by tlamart          ###   ########.fr        #
+#    Updated: 2019/01/10 11:40:58 by tlamart          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ SRCS = ft_memalloc.c ft_memdel.c ft_strnew.c ft_strdel.c ft_strclr.c           \
 	  ft_strrchr.c ft_toupper.c ft_tolower.c ft_atoi.c ft_strstr.c            \
 	  ft_strnstr.c ft_strlcat.c ft_lstnew.c ft_lstadd.c ft_lstdelone.c        \
 	  ft_lstdel.c ft_lstiter.c ft_lstmap.c ft_lstappend.c ft_lstdel_cnt.c     \
-	  ft_isspace.c ft_lstcut_next.c ft_lstset.c get_next_line.c ft_swap.c     \
-	  ft_lstlen.c
+	  ft_isspace.c ft_lstcut_next.c ft_lstset.c get_next_line.c ft_lstlen.c   \
+	  ft_swap.c
 
 OBJS = ft_memalloc.o ft_memdel.o ft_strnew.o ft_strdel.o ft_strclr.o           \
 	  ft_striter.o ft_striteri.o ft_strmap.o ft_strlen.o ft_strmapi.o         \
@@ -37,8 +37,8 @@ OBJS = ft_memalloc.o ft_memdel.o ft_strnew.o ft_strdel.o ft_strclr.o           \
 	  ft_strrchr.o ft_toupper.o ft_tolower.o ft_atoi.o ft_strstr.o            \
 	  ft_strnstr.o ft_strlcat.o ft_lstnew.o ft_lstadd.o ft_lstdelone.o        \
 	  ft_lstdel.o ft_lstiter.o ft_lstmap.o ft_lstappend.o ft_lstdel_cnt.o     \
-	  ft_isspace.o ft_lstcut_next.o ft_lstset.o get_next_line.o ft_swap.o	  \
-	  ft_lstlen.o
+	  ft_isspace.o ft_lstcut_next.o ft_lstset.o get_next_line.o ft_lstlen.o   \
+	  ft_swap.o
 
 NAME = libft.a
 
@@ -59,5 +59,3 @@ fclean : clean
 	rm -rf $(NAME)
 
 re : fclean all
-
-.PHONY : all clean fclean re

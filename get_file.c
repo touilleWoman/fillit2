@@ -6,13 +6,24 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 15:07:30 by tlamart           #+#    #+#             */
-/*   Updated: 2019/01/09 14:29:56 by tlamart          ###   ########.fr       */
+/*   Updated: 2019/01/10 11:34:27 by tlamart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "fillit.h"
-#include <unistd.h>
+
+int		get_file(char *file_path, char **file)
+{
+	int		fd;
+	int		ret;
+
+	fd = open(file_path, O_RDONLY);
+	ret = read(fd, *file, 1024);
+	close(fd);
+	if (ret < 20 || ret > 546 || (ret + 1) % 21 != 0)
+		return (0);
+	return (ret + 1);
+}
 
 int		check_around(char *tetri, int i)
 {
@@ -28,7 +39,7 @@ int		check_around(char *tetri, int i)
 				+ (tetri[i + 1] == '#'));
 	else
 		return ((tetri[i - 5] == '#') + (tetri[i - 1] == '#') +\
-				(tetri[i + 1] == '#') + (tetri[i + 5] == '#'));
+			(tetri[i + 1] == '#') + (tetri[i + 5] == '#'));
 }
 
 int		check_tetri(char *tetri)
@@ -71,10 +82,12 @@ int		check_line(char *line)
 	return (0);
 }
 
-int		verif_file(char *file)
+int		check_file(char *file)
 {
 	int		nb_line;
 
+	if (!file)
+		return (0);
 	nb_line = 0;
 	while (check_line(file))
 	{
@@ -94,24 +107,4 @@ int		verif_file(char *file)
 		}
 	}
 	return (0);
-}
-
-void	get_file(const int fd, char **file, t_list **tetri_lst)
-{
-	int		ret;
-	char	*tmp;
-
-	if (!(*file = ft_strnew(1024)))
-		return ;
-	tmp = *file;
-	ret = read(fd, *file, 1024);
-	if (ret < 20 || ret > 546 || (ret + 1) % 21 != 0 || !(verif_file(*file)))
-	{
-		ft_strdel(&tmp);
-		*file = NULL;
-		return ;
-	}
-	create_tetri((ret + 1) / 21, *file, tetri_lst);
-	ft_strdel(&tmp);
-	*file = NULL;
 }
