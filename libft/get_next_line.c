@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:45:04 by tlamart           #+#    #+#             */
-/*   Updated: 2018/12/19 12:09:05 by thibault         ###   ########.fr       */
+/*   Updated: 2019/01/10 13:41:18 by tlamart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,4 @@ int		get_next_line(const int fd, char **line)
 	}
 	ft_strdel(&bol);
 	return (0);
-	return(0);
 }
