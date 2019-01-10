@@ -6,15 +6,11 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 15:07:30 by tlamart           #+#    #+#             */
-/*   Updated: 2019/01/02 16:45:27 by tlamart          ###   ########.fr       */
+/*   Updated: 2019/01/10 11:34:27 by tlamart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <fcntl.h>
-#include <unistd.h>
-
-// recup le fichier et verifie si la taille correspond a une taille standard
 
 int		get_file(char *file_path, char **file)
 {
@@ -25,16 +21,11 @@ int		get_file(char *file_path, char **file)
 	ret = read(fd, *file, 1024);
 	close(fd);
 	if (ret < 20 || ret > 546 || (ret + 1) % 21 != 0)
-	{
-		ft_putnbr(ret);
 		return (0);
-	}
 	return (ret + 1);
 }
 
-// verifie si taille ligne = 4 & contient uniquement . # \n
-
-int		check_around(char *tetri, int	i)
+int		check_around(char *tetri, int i)
 {
 	if (i < 5)
 	{
@@ -46,7 +37,8 @@ int		check_around(char *tetri, int	i)
 	else if (i >= 15)
 		return ((tetri[i - 5] == '#') + (tetri[i - 1] == '#')\
 				+ (tetri[i + 1] == '#'));
-	return ((tetri[i - 5] == '#') + (tetri[i - 1] == '#') +\
+	else
+		return ((tetri[i - 5] == '#') + (tetri[i - 1] == '#') +\
 			(tetri[i + 1] == '#') + (tetri[i + 5] == '#'));
 }
 
@@ -85,12 +77,10 @@ int		check_line(char *line)
 		len++;
 		line++;
 	}
-	if (len ==  4 && *line == '\n')
+	if (len == 4 && *line == '\n')
 		return (1);
 	return (0);
 }
-
-// verifie que le fichier soit bien valide (pas les tetris !)
 
 int		check_file(char *file)
 {
